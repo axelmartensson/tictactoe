@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from __future__ import print_function
-import sys, random
+import sys, random, re
 if sys.version_info[0] < 3:
     input = raw_input
 
@@ -29,6 +29,8 @@ def automove():
 def move(move):
     if move == 'p':
         return
+    elif re.match("[a-c][0-2]",move) is None:
+        raise ValueError('Invalid input, should be: [a-c][0-2]')
     row = rows[move[0]]
     col = int(move[1])
     if state[row][col] is None:
